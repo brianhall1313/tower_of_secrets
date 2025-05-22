@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhpsi1vojt34w"]
+
+[ext_resource type="Script" uid="uid://dxydcaigdcg5g" path="res://Scenes/player.gd" id="1_jjmsi"]
+[ext_resource type="Resource" uid="uid://bucx7bc36olgf" path="res://Resources/PlayerMovementData.tres" id="2_imic3"]
+[ext_resource type="Texture2D" uid="uid://domja8p8fc51y" path="res://icon.svg" id="3_6t5aa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imic3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6t5aa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="player" type="Node2D"]
+script = ExtResource("1_jjmsi")
+movement_data = ExtResource("2_imic3")
+
+[node name="player_body" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_body"]
+shape = SubResource("RectangleShape2D_imic3")
+
+[node name="player_sprite" type="AnimatedSprite2D" parent="player_body"]
+position = Vector2(0.5, 0.5)
+scale = Vector2(0.164062, 0.164062)
+sprite_frames = SubResource("SpriteFrames_vgqql")
+
+[node name="player_pov" type="Camera2D" parent="player_body"]
+
+[node name="coyote_timer" type="Timer" parent="."]
+
+[node name="wall_jump_timer" type="Timer" parent="."]
+
+[node name="attack_timer" type="Timer" parent="."]
+one_shot = true

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://bucx7bc36olgf"]
+
+[ext_resource type="Script" uid="uid://cpjcqcwy024lw" path="res://Resources/movement_data.gd" id="1_nuodv"]
+
+[resource]
+script = ExtResource("1_nuodv")
+speed = 100.0
+push_speed = 100
+acceleration = 700.0
+air_acceleration = 350
+friction = 1500.0
+jump_velocity = -400.0
+air_jump_velocity = -200
+air_resistance = 1500
+gravity_scale = 1.0
+metadata/_custom_type_script = "uid://cpjcqcwy024lw"
