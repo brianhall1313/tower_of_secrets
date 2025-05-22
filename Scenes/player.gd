@@ -10,6 +10,7 @@ extends Node2D
 @onready var melee_box = preload("res://Resources/attack_hit_area.tscn")
 
 @export var movement_data: PlayerMovementData
+@export var health: Health
 
 var sprite_height:float = 16
 var is_jumping:bool = false
@@ -25,7 +26,8 @@ const PUSH_FORCE = 20
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-#func _ready():
+func _ready():
+	health
 #	animated_sprite.play("idle")
 func _physics_process(delta):
 	if (is_jumping or is_falling) and player_body.is_on_floor():

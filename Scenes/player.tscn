@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhpsi1vojt34w"]
+[gd_scene load_steps=7 format=3 uid="uid://dhpsi1vojt34w"]
 
 [ext_resource type="Script" uid="uid://dxydcaigdcg5g" path="res://Scenes/player.gd" id="1_jjmsi"]
 [ext_resource type="Resource" uid="uid://bucx7bc36olgf" path="res://Resources/PlayerMovementData.tres" id="2_imic3"]
 [ext_resource type="Texture2D" uid="uid://domja8p8fc51y" path="res://icon.svg" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bbptjhqk51frq" path="res://Resources/health.tscn" id="4_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imic3"]
 
@@ -17,9 +18,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="Node2D"]
+[node name="player" type="Node2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_jjmsi")
 movement_data = ExtResource("2_imic3")
+health = NodePath("Health")
 
 [node name="player_body" type="CharacterBody2D" parent="."]
 
@@ -32,6 +34,8 @@ scale = Vector2(0.164062, 0.164062)
 sprite_frames = SubResource("SpriteFrames_vgqql")
 
 [node name="player_pov" type="Camera2D" parent="player_body"]
+
+[node name="Health" parent="." instance=ExtResource("4_vgqql")]
 
 [node name="coyote_timer" type="Timer" parent="."]
 
