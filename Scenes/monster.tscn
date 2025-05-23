@@ -1,16 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcijky47s3wfi"]
+[gd_scene load_steps=6 format=3 uid="uid://dcijky47s3wfi"]
 
 [ext_resource type="Script" uid="uid://ds7kn5230rr2l" path="res://Scenes/monster.gd" id="1_i44lo"]
 [ext_resource type="PackedScene" uid="uid://bbptjhqk51frq" path="res://Resources/health.tscn" id="2_hyvb2"]
+[ext_resource type="Texture2D" uid="uid://domja8p8fc51y" path="res://icon.svg" id="2_ujuxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpp4a"]
+size = Vector2(32, 32)
 
-[node name="monster" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_cyu0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ujuxu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="monster" type="Node2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_i44lo")
+health = NodePath("Health")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_rpp4a")
+
+[node name="sprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_cyu0s")
 
 [node name="Health" parent="." instance=ExtResource("2_hyvb2")]

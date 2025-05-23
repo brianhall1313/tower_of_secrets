@@ -27,7 +27,7 @@ const PUSH_FORCE = 20
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	health
+	health.setup(100,100)#teseting purposes, this will be changed in later versions to be based on levels
 #	animated_sprite.play("idle")
 func _physics_process(delta):
 	if (is_jumping or is_falling) and player_body.is_on_floor():
@@ -131,7 +131,7 @@ func handle_attack() -> void:
 		var new:HitArea= melee_box.instantiate()
 		add_child(new)
 		new.global_position = player_body.global_position
-		new.setup(Vector2(100,8),1)
+		new.setup(Vector2(100,8),1,player_body)
 		print("attack_launched")
 		
 	
