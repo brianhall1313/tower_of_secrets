@@ -31,6 +31,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if !hit_targets.has(body):
 		hit_targets.append(body)#so when one attack hits it doesn't re register the hits
 		print(body," entered")
-		if body.get_parent().has_method("take_damage"):
+		if body.has_method("take_damage"):
 			if power:
-				body.get_parent().take_damage(power)
+				body.take_damage(power)

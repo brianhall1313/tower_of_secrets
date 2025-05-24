@@ -18,22 +18,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="Node2D" node_paths=PackedStringArray("health")]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["Player"]]
 script = ExtResource("1_jjmsi")
 movement_data = ExtResource("2_imic3")
 health = NodePath("Health")
-
-[node name="player_body" type="CharacterBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_body"]
-shape = SubResource("RectangleShape2D_imic3")
-
-[node name="player_sprite" type="AnimatedSprite2D" parent="player_body"]
-position = Vector2(0.5, 0.5)
-scale = Vector2(0.164062, 0.164062)
-sprite_frames = SubResource("SpriteFrames_vgqql")
-
-[node name="player_pov" type="Camera2D" parent="player_body"]
 
 [node name="Health" parent="." instance=ExtResource("4_vgqql")]
 
@@ -43,3 +31,13 @@ sprite_frames = SubResource("SpriteFrames_vgqql")
 
 [node name="attack_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_imic3")
+
+[node name="player_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, 0.5)
+scale = Vector2(0.164062, 0.164062)
+sprite_frames = SubResource("SpriteFrames_vgqql")
+
+[node name="player_pov" type="Camera2D" parent="."]
