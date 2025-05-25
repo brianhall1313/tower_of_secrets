@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcijky47s3wfi"]
+[gd_scene load_steps=8 format=3 uid="uid://dcijky47s3wfi"]
 
 [ext_resource type="Script" uid="uid://ds7kn5230rr2l" path="res://Scenes/monster.gd" id="1_i44lo"]
+[ext_resource type="Resource" uid="uid://v12436a1nkrr" path="res://Resources/MonsterMovementData.tres" id="2_cyu0s"]
 [ext_resource type="PackedScene" uid="uid://bbptjhqk51frq" path="res://Resources/health.tscn" id="2_hyvb2"]
 [ext_resource type="Texture2D" uid="uid://domja8p8fc51y" path="res://icon.svg" id="2_ujuxu"]
 
@@ -24,6 +25,7 @@ radius = 300.0
 [node name="monster" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_i44lo")
 health = NodePath("Health")
+movement_data = ExtResource("2_cyu0s")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

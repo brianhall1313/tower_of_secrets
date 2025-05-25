@@ -20,7 +20,6 @@ var floor_offset:float = sprite_height/2
 var air_jumps:bool = true
 var last_direction:float = 1
 
-const PUSH_FORCE = 20
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
