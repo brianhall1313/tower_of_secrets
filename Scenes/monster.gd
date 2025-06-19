@@ -4,13 +4,15 @@ extends CharacterBody2D
 @onready var aggro_range: Area2D = $aggro_range
 @onready var aggro_timer: Timer = $aggro_timer
 @onready var sight_line: RayCast2D = $sight_line
+@onready var left_collision: RayCast2D = $left_collision
+@onready var right_collision: RayCast2D = $right_collision
 
 
 @export var movement_data: PlayerMovementData
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var target:Node2D
-var direction:float = -1.0
+var direction:float = 0.0
 
 func _ready() -> void:
 	health.setup(1,1)
@@ -23,15 +25,20 @@ func _process(delta: float) -> void:
 		#if the player is the thing struk, move towards them laterally, attacking if able
 		if sight_line.get_collider() == target:
 			print("I see you!")
-			if position.y-target.position.y > 0:
+			if position.x-target.position.x > 0:
+				print("left")
 				direction = -1.0
 			else:
+				print("right")
 				direction = 1.0
-			process_move(delta)
+		else:
+			print("I don't see you")
+			direction = 0.0
 	elif aggro_timer.time_left > 0.0:
 		velocity = Vector2.ZERO
 	else:
 		patrol()
+	process_move(delta)
 	move_and_slide()
 
 func process_move(delta:float) -> void:
@@ -44,7 +51,14 @@ func process_move(delta:float) -> void:
 	
 
 func patrol() -> void:
-	pass
+	if direction == 0.0:
+		direction = float(randi_range(-1,1))
+	if direction == 1.0:
+		if not right_collision.get_collider():
+			direction = -1.0
+	else: 
+		if not left_collision.get_collider():
+			direction = 1.0
 
 
 func handle_gravity(delta:float)->void:

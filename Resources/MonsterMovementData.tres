@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_6u7na")
-speed = 100.0
+speed = 50.0
 push_speed = 100
 acceleration = 700.0
 air_acceleration = 350

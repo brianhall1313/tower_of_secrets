@@ -46,5 +46,11 @@ one_shot = true
 
 [node name="sight_line" type="RayCast2D" parent="."]
 
+[node name="left_collision" type="RayCast2D" parent="."]
+position = Vector2(-20, 0)
+
+[node name="right_collision" type="RayCast2D" parent="."]
+position = Vector2(20, 0)
+
 [connection signal="body_entered" from="aggro_range" to="." method="_on_aggro_range_body_entered"]
 [connection signal="body_exited" from="aggro_range" to="." method="_on_aggro_range_body_exited"]
