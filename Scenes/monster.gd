@@ -6,27 +6,46 @@ extends CharacterBody2D
 @onready var sight_line: RayCast2D = $sight_line
 @onready var left_collision: RayCast2D = $left_collision
 @onready var right_collision: RayCast2D = $right_collision
-
+#cooldown is for how there should be inbetween attacks
+@onready var attack_cooldown: Timer = $attack_cooldown
+#how long it takes for an attack to take
+@onready var attack_time: Timer = $attack_time
 
 @export var movement_data: PlayerMovementData
+
+#attack base
+@onready var melee_box = preload("res://Resources/attack_hit_area.tscn")
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var target:Node2D
 var direction:float = 0.0
 @export var last_direction:float = -1.0#defaults to left, but export so that monsters can have a different default if necessary.
 var patrolling:bool = true
+#for testing purposes 50, will make this a check eventually with a set of attack objects
+var attack_dir:Dictionary = {
+	"range":50.0,
+	"size":Vector2(100,100),
+	"time":3
+}
+
+
 func _ready() -> void:
 	health.setup(1,1)
 	health.connect("death",death)
 
 func _process(delta: float) -> void:
-	#if you 
-	if target:
-		target_movement()
-	if patrolling:
-		patrol()
-	process_move(delta)
-	move_and_slide()
+	if attack_time.is_stopped():
+		if target:
+			if target_in_range() and attack_cooldown.is_stopped():
+				print("I should attack you!")
+				attack()
+			else:
+				target_movement()
+		if patrolling:
+			patrol()
+		process_move(delta)
+		move_and_slide()
 
 func process_move(delta:float) -> void:
 	handle_gravity(delta)
@@ -97,6 +116,21 @@ func death() -> void:
 	#death animation stuff
 	queue_free()
 
+func target_in_range() -> bool:
+	if target:
+		if position.distance_to(target.position) <= attack_dir["range"]:
+			return true
+	return false
+
+func attack() -> void:
+		attack_cooldown.start(15)
+		attack_time.start(attack_dir["time"])
+		print("attack time!")
+		var new:HitArea= melee_box.instantiate()
+		add_child(new)
+		new.global_position = global_position
+		new.setup(attack_dir["size"],attack_dir["time"],self,10)#shape,time,origin,damage
+		print("attack_launched")
 
 func _on_aggro_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

@@ -25,4 +25,4 @@ tile_set = SubResource("TileSet_xaalk")
 position = Vector2(55, 597)
 
 [node name="monster" parent="." instance=ExtResource("3_7cjek")]
-position = Vector2(473, 267)
+position = Vector2(887, 602)

@@ -19,6 +19,7 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["Player"]]
+safe_margin = 0.1
 script = ExtResource("1_jjmsi")
 movement_data = ExtResource("2_imic3")
 health = NodePath("Health")

@@ -44,6 +44,12 @@ shape = SubResource("CircleShape2D_hyvb2")
 [node name="aggro_timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="attack_cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="attack_time" type="Timer" parent="."]
+one_shot = true
+
 [node name="sight_line" type="RayCast2D" parent="."]
 
 [node name="left_collision" type="RayCast2D" parent="."]
