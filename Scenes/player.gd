@@ -58,6 +58,7 @@ func _physics_process(delta):
 	if wall_jump_available: 
 		wall_jump_timer.start()
 	if was_on_floor and not is_on_floor() and not is_jumping:
+		print("is falling")
 		is_falling = true
 		coyote_timer.start()
 
@@ -87,7 +88,7 @@ func handle_wall_jump():
 
 func handle_jump():
 	if  is_on_floor() or coyote_timer.time_left > 0:
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") and not is_jumping:
 			is_jumping = true
 			velocity.y = movement_data.jump_velocity
 			#AudioController.jump.play()
@@ -95,6 +96,7 @@ func handle_jump():
 	elif not is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			if air_jumps:
+				print("air jump")
 				air_jumps = false
 				velocity.y = movement_data.air_jump_velocity
 				#AudioController.jump.play()

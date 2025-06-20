@@ -26,6 +26,8 @@ health = NodePath("Health")
 [node name="Health" parent="." instance=ExtResource("4_vgqql")]
 
 [node name="coyote_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [node name="wall_jump_timer" type="Timer" parent="."]
 
