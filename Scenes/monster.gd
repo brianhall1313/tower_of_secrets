@@ -13,30 +13,17 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var target:Node2D
 var direction:float = 0.0
-
+@export var last_direction:float = -1.0#defaults to left, but export so that monsters can have a different default if necessary.
+var patrolling:bool = true
 func _ready() -> void:
 	health.setup(1,1)
 	health.connect("death",death)
 
 func _process(delta: float) -> void:
+	#if you 
 	if target:
-		#move toward player
-		sight_line.target_position = target.position - position#points at player
-		#if the player is the thing struk, move towards them laterally, attacking if able
-		if sight_line.get_collider() == target:
-			print("I see you!")
-			if position.x-target.position.x > 0:
-				print("left")
-				direction = -1.0
-			else:
-				print("right")
-				direction = 1.0
-		else:
-			print("I don't see you")
-			direction = 0.0
-	elif aggro_timer.time_left > 0.0:
-		velocity = Vector2.ZERO
-	else:
+		target_movement()
+	if patrolling:
 		patrol()
 	process_move(delta)
 	move_and_slide()
@@ -48,11 +35,34 @@ func process_move(delta:float) -> void:
 	handle_friction(delta)
 	handle_air_resistance(delta)
 	
-	
+func target_movement() -> void:
+	#move toward player
+	sight_line.target_position = target.position - position#points at player
+	#if the player is the thing struk, move towards them laterally, attacking if able
+	if sight_line.get_collider() == target:
+		#print("I see you!")
+		#print(target.position-position)
+		if position.x-target.position.x > 0:
+			#print("left")
+			direction = -1.0
+			last_direction = direction
+		else:
+			#print("right")
+			direction = 1.0
+			last_direction = direction
+		
+	else:
+		print("I don't see you")
+		patrolling = true
+
 
 func patrol() -> void:
 	if direction == 0.0:
-		direction = float(randi_range(-1,1))
+		direction = last_direction
+	else:
+		if is_on_wall():
+			direction = direction * -1.0
+			last_direction = direction
 	if direction == 1.0:
 		if not right_collision.get_collider():
 			direction = -1.0
@@ -93,10 +103,11 @@ func _on_aggro_range_body_entered(body: Node2D) -> void:
 		sight_line.target_position = body.global_position
 		print("I see you~")
 		target = body
+		patrolling = false
 
 
 func _on_aggro_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		print("Where did you go~")
 		target = null
-		aggro_timer.start(3)
+		patrolling = true

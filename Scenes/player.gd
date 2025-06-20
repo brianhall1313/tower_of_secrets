@@ -37,13 +37,13 @@ func _physics_process(delta):
 		is_falling = false
 		air_jumps = true
 		#landing_animation()
-	handle_gravity(delta)
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction != 0:
 		last_direction = direction
 	if attack_timer.is_stopped():
 		handle_wall_jump()
 		handle_jump()
+		handle_gravity(delta)
 		handle_acceleration(direction,delta)
 		handle_air_acceleration(direction,delta)
 		handle_friction(direction,delta)
