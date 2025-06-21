@@ -1,9 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhpsi1vojt34w"]
+[gd_scene load_steps=10 format=3 uid="uid://dhpsi1vojt34w"]
 
 [ext_resource type="Script" uid="uid://dxydcaigdcg5g" path="res://Scenes/player.gd" id="1_jjmsi"]
 [ext_resource type="Resource" uid="uid://bucx7bc36olgf" path="res://Resources/PlayerMovementData.tres" id="2_imic3"]
 [ext_resource type="Texture2D" uid="uid://domja8p8fc51y" path="res://icon.svg" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bbptjhqk51frq" path="res://Resources/health.tscn" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://k3kwy3l2eg8p" path="res://Scenes/ui.gd" id="5_fkybt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
+bg_color = Color(0.933333, 0.211765, 0.2, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imic3"]
 
@@ -24,6 +31,34 @@ script = ExtResource("1_jjmsi")
 movement_data = ExtResource("2_imic3")
 health = NodePath("Health")
 
+[node name="player_pov" type="Camera2D" parent="."]
+
+[node name="UI" type="Control" parent="player_pov"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -300.0
+offset_top = -300.0
+offset_right = -260.0
+offset_bottom = -260.0
+script = ExtResource("5_fkybt")
+metadata/_edit_group_ = true
+
+[node name="player_stats" type="VBoxContainer" parent="player_pov/UI"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 172.0
+offset_bottom = 40.0
+
+[node name="health_bar" type="ProgressBar" parent="player_pov/UI/player_stats"]
+custom_minimum_size = Vector2(180, 9)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_vgqql")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fkybt")
+step = 1.0
+value = 75.0
+show_percentage = false
+
 [node name="Health" parent="." instance=ExtResource("4_vgqql")]
 
 [node name="coyote_timer" type="Timer" parent="."]
@@ -42,5 +77,3 @@ shape = SubResource("RectangleShape2D_imic3")
 position = Vector2(0.5, 0.5)
 scale = Vector2(0.164062, 0.164062)
 sprite_frames = SubResource("SpriteFrames_vgqql")
-
-[node name="player_pov" type="Camera2D" parent="."]

@@ -6,9 +6,9 @@ extends Node
 
 signal death
 
-func setup(max:int,current:int)-> void:
-	max_health = max
-	current_health = current
+func setup(new_max_health:int,new_current_health:int)-> void:
+	max_health = new_max_health
+	current_health = new_current_health
 
 func take_damage(damage:int) -> void:
 	if damage >= current_health:

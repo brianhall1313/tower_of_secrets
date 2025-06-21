@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var wall_jump_timer: Timer = $wall_jump_timer
 @onready var attack_timer: Timer = $attack_timer
 @onready var player_sprite: AnimatedSprite2D = $player_sprite
+@onready var ui: Control = $player_pov/UI
 
 #attack base
 @onready var melee_box = preload("res://Resources/attack_hit_area.tscn")
@@ -28,6 +29,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	health.setup(100,100)#teseting purposes, this will be changed in later versions to be based on levels
 	health.connect("death",death)
+	ui.setup(health.max_health,health.current_health)
 #	animated_sprite.play("idle")
 
 
@@ -138,10 +140,14 @@ func handle_attack() -> void:
 		new.setup(Vector2(100,8),1,self,10)
 		print("attack_launched")
 		
-	
+
 
 func handle_animation(_direction):
 	pass
+
+func take_damage(damage:int) -> void:
+	health.take_damage(damage)
+	ui.update_health(health.max_health,health.current_health)
 
 func death() -> void:
 	#play death animation
