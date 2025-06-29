@@ -4,4 +4,5 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
-	GlobalSignalBus.emit_level_transition(destination)
+	if body.is_in_group("Player"):
+		LevelDirectory.level_change(destination)

@@ -7,6 +7,8 @@ extends Node
 #their starting position, and their status as picked up or not
 #this will be used to populate the items in game
 
+var entry_pos:int = 1
+
 var level_list:Dictionary = {
 	"entry1":{
 		"visited":false,
@@ -18,10 +20,34 @@ var level_list:Dictionary = {
 				"obtained":false
 			},
 		],
-	}
+	},
+	"entry2":{
+		"visited":false,
+		"scene":preload("res://Resources/entry2.tscn"),
+		"pickups":[
+			{
+				"id":"potion",
+				"pos":Vector2(0,0),
+				"obtained":false
+			},
+		],
+	},
+	"tower1":{
+		"visited":false,
+		"scene":preload("res://Resources/tower1.tscn"),
+		"pickups":[
+			{
+				"id":"potion",
+				"pos":Vector2(0,0),
+				"obtained":false
+			},
+		],
+	},
 }
 
 func level_change(destination)->void:
 	if destination in level_list.keys():
 		#update player information
+		if not level_list[destination]["visited"]:
+			level_list[destination]["visited"] = true
 		get_tree().change_scene_to_packed(level_list[destination]["scene"])

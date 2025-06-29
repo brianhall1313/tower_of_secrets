@@ -43,4 +43,6 @@ position = Vector2(-16, 544)
 position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_11ap5")
 
-[node name="transition" parent="." instance=ExtResource("3_l7rge")]
+[node name="transition_toentry2" parent="." instance=ExtResource("3_l7rge")]
+position = Vector2(696, 552)
+destination = "entry2"
