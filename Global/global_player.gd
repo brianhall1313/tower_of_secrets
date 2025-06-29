@@ -1,10 +1,11 @@
-class_name Health
 extends Node
 
 @export var max_health:int 
 @export var current_health:int
 
-signal death
+func _ready() -> void:
+	#TODO delete this later
+	load_data()
 
 func setup(new_max_health:int,new_current_health:int)-> void:
 	max_health = new_max_health
@@ -13,6 +14,12 @@ func setup(new_max_health:int,new_current_health:int)-> void:
 func take_damage(damage:int) -> void:
 	if damage >= current_health:
 		current_health = 0
-		death.emit()
 		return
 	current_health = current_health - damage
+
+func load_data()->void:
+	#TODO actually add loading and saving
+	setup(100,10)
+func save_data()->void:
+	#TODO actually add loading and saving
+	pass

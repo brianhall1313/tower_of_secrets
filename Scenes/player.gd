@@ -11,7 +11,6 @@ extends CharacterBody2D
 @onready var melee_box = preload("res://Resources/attack_hit_area.tscn")
 
 @export var movement_data: PlayerMovementData
-@export var health: Health
 
 var sprite_height:float = 16
 var is_jumping:bool = false
@@ -27,9 +26,7 @@ var last_direction:float = 1
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	health.setup(100,100)#teseting purposes, this will be changed in later versions to be based on levels
-	health.connect("death",death)
-	ui.setup(health.max_health,health.current_health)
+	ui.setup(GlobalPlayer.max_health,GlobalPlayer.current_health)
 #	animated_sprite.play("idle")
 
 
@@ -146,11 +143,14 @@ func handle_animation(_direction):
 	pass
 
 func take_damage(damage:int) -> void:
-	health.take_damage(damage)
-	ui.update_health(health.max_health,health.current_health)
+	GlobalPlayer.take_damage(damage)
+	ui.update_health(GlobalPlayer.max_health,GlobalPlayer.current_health)
+	if GlobalPlayer.current_health <= 0:
+		death()
+	#TODO play damage taken animation
 
 func death() -> void:
 	#play death animation
-	queue_free()
 	print("player death")
+	#TODO don't do this after we make a death screen lol
 	get_tree().quit()
