@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Tower_of_Secrets"
+run/main_scene="uid://bxk7fnr2rdshm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,7 +20,8 @@ config/icon="res://icon.svg"
 GlobalSignalBus="*res://Global/GlobalSignalBus.gd"
 ItemDirectory="*res://Global/ItemDirectory.gd"
 LevelDirectory="*res://Global/LevelDirectory.gd"
-GlobalPlayer="*res://Global/GlobalPlayer.tscn"
+GlobalPlayer="*res://Global/GlobalPlayer.gd"
+SaveAndLoad="*res://Global/SaveAndLoad.gd"
 
 [input]
 

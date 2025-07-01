@@ -3,6 +3,8 @@ extends Node
 @export var max_health:int 
 @export var current_health:int
 
+var inventory:Array = []
+
 func _ready() -> void:
 	#TODO delete this later
 	load_data()
@@ -23,3 +25,7 @@ func load_data()->void:
 func save_data()->void:
 	#TODO actually add loading and saving
 	pass
+
+func new_game() -> void:
+	inventory = []
+	setup(100,100)
