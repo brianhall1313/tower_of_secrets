@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2v1toufa1r5u"]
+
+[ext_resource type="Script" uid="uid://d1a8opr4scvow" path="res://Scenes/save_point.gd" id="1_qilv1"]
+[ext_resource type="Texture2D" uid="uid://2q3vu2abqak2" path="res://Sprites/save_point.png" id="2_uo8vs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n78jj"]
+size = Vector2(32, 48)
+
+[node name="save_point" type="Node2D"]
+script = ExtResource("1_qilv1")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_n78jj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uo8vs")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

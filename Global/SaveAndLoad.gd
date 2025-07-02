@@ -1,10 +1,10 @@
 extends Node
-@export var save_dictionary: Array = []
+@export var save_dictionary: Dictionary = {}
 @export var data_path="user://save_data.save"
 
 
 
-func save_game(slot,data):
+func save_game(data):
 	var full_path = data_path
 	var save_file=FileAccess.open(full_path,FileAccess.WRITE)
 	var json_string = JSON.stringify(data)
@@ -35,3 +35,26 @@ func load_json():
 	else:
 		print('Json parse error:file does not exist')
 		return false
+
+func create_default() -> void:
+	var temp = {
+		"slot1":{
+			"player":"None",
+			"map":LevelDirectory.level_list,
+			"inventory":[],
+			"last_save":"None"
+		},
+		"slot2":{
+			"player":"None",
+			"map":LevelDirectory.level_list,
+			"inventory":[],
+			"last_save":"None"
+		},
+		"slot3":{
+			"player":"None",
+			"map":LevelDirectory.level_list,
+			"inventory":[],
+			"last_save":"None"
+		},
+	}
+	save_game(temp)

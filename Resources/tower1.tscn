@@ -35,7 +35,7 @@ position = Vector2(55, 597)
 
 [node name="transition_toentry2" parent="." instance=ExtResource("3_72l8n")]
 position = Vector2(328, 576)
-destination = "entry2"
+destination = "towerSave"
 
 [node name="transition_toentry3" parent="." instance=ExtResource("3_72l8n")]
 position = Vector2(-8, 592)

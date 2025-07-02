@@ -5,4 +5,8 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		LevelDirectory.level_change(destination)
+		body.set_transition()
+		if destination:
+			LevelDirectory.level_change(destination)
+		else:
+			print("error, no destination set in ",name)

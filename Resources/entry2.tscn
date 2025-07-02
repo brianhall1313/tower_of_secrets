@@ -32,7 +32,7 @@ position = Vector2(88, 0)
 tile_set = SubResource("TileSet_xaalk")
 
 [node name="player" parent="." instance=ExtResource("2_v3cn5")]
-position = Vector2(24, 608)
+position = Vector2(40, 608)
 
 [node name="transition_totower1" parent="." instance=ExtResource("3_jajs8")]
 position = Vector2(696, 552)

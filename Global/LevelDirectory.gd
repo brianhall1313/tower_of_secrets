@@ -8,11 +8,12 @@ extends Node
 #this will be used to populate the items in game
 
 var entry_pos:int = 0
+var new_destination:String = ""
 
 var level_list:Dictionary = {
 	"entry1":{
 		"visited":false,
-		"scene":preload("res://Resources/entry1.tscn"),
+		"scene":load("res://Resources/entry1.tscn"),
 		"pickups":[
 			{
 				"id":"potion",
@@ -23,7 +24,7 @@ var level_list:Dictionary = {
 	},
 	"entry2":{
 		"visited":false,
-		"scene":preload("res://Resources/entry2.tscn"),
+		"scene":load("res://Resources/entry2.tscn"),
 		"pickups":[
 			{
 				"id":"potion",
@@ -34,7 +35,7 @@ var level_list:Dictionary = {
 	},
 	"tower1":{
 		"visited":false,
-		"scene":preload("res://Resources/tower1.tscn"),
+		"scene":load("res://Resources/tower1.tscn"),
 		"pickups":[
 			{
 				"id":"potion",
@@ -42,6 +43,11 @@ var level_list:Dictionary = {
 				"obtained":false
 			},
 		],
+	},
+	"towerSave":{
+		"visited":false,
+		"scene":load("res://Resources/towerSave.tscn"),
+		"pickups":[],
 	},
 }
 
@@ -51,7 +57,13 @@ func level_change(destination:String)->void:
 		#update player information
 		if not level_list[destination]["visited"]:
 			level_list[destination]["visited"] = true
-		get_tree().change_scene_to_packed(level_list[destination]["scene"])
+			new_destination = destination
+
+func process_level_change() -> void:
+	if new_destination != "":
+		get_tree().change_scene_to_packed(level_list[new_destination]["scene"])
+		new_destination = ""
+		print("new destination is ",new_destination)
 
 func save_map() -> Dictionary:
 	return level_list
