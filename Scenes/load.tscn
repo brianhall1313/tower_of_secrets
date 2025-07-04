@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://brv0xl0e4dwik"]
+[gd_scene load_steps=3 format=3 uid="uid://brv0xl0e4dwik"]
 
 [ext_resource type="Script" uid="uid://svo5p4qfgnx4" path="res://Scenes/load.gd" id="1_nekxi"]
+[ext_resource type="PackedScene" uid="uid://mfqtivouw4ux" path="res://Scenes/sava_data_display.tscn" id="2_wsyng"]
 
 [node name="load" type="Node2D"]
 script = ExtResource("1_nekxi")
@@ -40,80 +41,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_constants/separation = 150
 
-[node name="load0" type="VBoxContainer" parent="UI/load_ui/load_selection"]
+[node name="save_data" parent="UI/load_ui/load_selection" instance=ExtResource("2_wsyng")]
 layout_mode = 2
+is_load = true
 
-[node name="save_name" type="Label" parent="UI/load_ui/load_selection/load0"]
+[node name="save_data2" parent="UI/load_ui/load_selection" instance=ExtResource("2_wsyng")]
 layout_mode = 2
-text = "Save Slot 1"
+slot = "slot 2"
+is_load = true
 
-[node name="sava_data_info" type="Label" parent="UI/load_ui/load_selection/load0"]
+[node name="save_data3" parent="UI/load_ui/load_selection" instance=ExtResource("2_wsyng")]
 layout_mode = 2
-text = "0%
-player name
-time?
-more data?"
-
-[node name="buttons" type="HBoxContainer" parent="UI/load_ui/load_selection/load0"]
-layout_mode = 2
-
-[node name="load_button" type="Button" parent="UI/load_ui/load_selection/load0/buttons"]
-layout_mode = 2
-text = "Load"
-
-[node name="delete_save" type="Button" parent="UI/load_ui/load_selection/load0/buttons"]
-layout_mode = 2
-text = "Delete"
-
-[node name="load1" type="VBoxContainer" parent="UI/load_ui/load_selection"]
-layout_mode = 2
-
-[node name="save_name" type="Label" parent="UI/load_ui/load_selection/load1"]
-layout_mode = 2
-text = "Save Slot 1"
-
-[node name="sava_data_info" type="Label" parent="UI/load_ui/load_selection/load1"]
-layout_mode = 2
-text = "0%
-player name
-time?
-more data?"
-
-[node name="buttons" type="HBoxContainer" parent="UI/load_ui/load_selection/load1"]
-layout_mode = 2
-
-[node name="load_button" type="Button" parent="UI/load_ui/load_selection/load1/buttons"]
-layout_mode = 2
-text = "Load"
-
-[node name="delete_save" type="Button" parent="UI/load_ui/load_selection/load1/buttons"]
-layout_mode = 2
-text = "Delete"
-
-[node name="load2" type="VBoxContainer" parent="UI/load_ui/load_selection"]
-layout_mode = 2
-
-[node name="save_name" type="Label" parent="UI/load_ui/load_selection/load2"]
-layout_mode = 2
-text = "Save Slot 1"
-
-[node name="sava_data_info" type="Label" parent="UI/load_ui/load_selection/load2"]
-layout_mode = 2
-text = "0%
-player name
-time?
-more data?"
-
-[node name="buttons" type="HBoxContainer" parent="UI/load_ui/load_selection/load2"]
-layout_mode = 2
-
-[node name="load_button" type="Button" parent="UI/load_ui/load_selection/load2/buttons"]
-layout_mode = 2
-text = "Load"
-
-[node name="delete_save" type="Button" parent="UI/load_ui/load_selection/load2/buttons"]
-layout_mode = 2
-text = "Delete"
+slot = "slot 3"
+is_load = true
 
 [node name="spacer2" type="Control" parent="UI/load_ui"]
 layout_mode = 2

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://mfqtivouw4ux"]
+
+[ext_resource type="Script" uid="uid://c6eqd4gx0pltd" path="res://Scenes/sava_data_display.gd" id="1_33vdu"]
+
+[node name="sava_data" type="VBoxContainer"]
+script = ExtResource("1_33vdu")
+
+[node name="save_name" type="Label" parent="."]
+layout_mode = 2
+text = "Save Slot 1"
+
+[node name="percent" type="Label" parent="."]
+layout_mode = 2
+text = "0%"
+
+[node name="player_name" type="Label" parent="."]
+layout_mode = 2
+text = "player name"
+
+[node name="last_save_time" type="Label" parent="."]
+layout_mode = 2
+text = "time"
+
+[node name="misc" type="Label" parent="."]
+layout_mode = 2
+
+[node name="buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="load_button" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Load"
+
+[node name="delete_save" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Delete"
+
+[connection signal="button_up" from="buttons/load_button" to="." method="_on_load_button_button_up"]
+[connection signal="button_up" from="buttons/delete_save" to="." method="_on_delete_save_button_up"]

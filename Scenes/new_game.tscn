@@ -1,0 +1,121 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq50ptnvdw0s1"]
+
+[ext_resource type="Script" uid="uid://d3teerkut11xt" path="res://Scenes/new_game.gd" id="1_kpfji"]
+[ext_resource type="PackedScene" uid="uid://mfqtivouw4ux" path="res://Scenes/sava_data_display.tscn" id="2_qegnj"]
+
+[node name="new_game" type="Node2D"]
+script = ExtResource("1_kpfji")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1168.0
+offset_bottom = 664.0
+
+[node name="background" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0.619608, 1)
+
+[node name="load_ui" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 1160.0
+offset_bottom = 656.0
+
+[node name="title" type="Label" parent="UI/load_ui"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Load Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spacer1" type="Control" parent="UI/load_ui"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="load_selection" type="HBoxContainer" parent="UI/load_ui"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 150
+
+[node name="save_data" parent="UI/load_ui/load_selection" instance=ExtResource("2_qegnj")]
+layout_mode = 2
+slot = "slot 1"
+is_load = false
+
+[node name="save_data2" parent="UI/load_ui/load_selection" instance=ExtResource("2_qegnj")]
+layout_mode = 2
+slot = "slot 2"
+is_load = false
+
+[node name="save_data3" parent="UI/load_ui/load_selection" instance=ExtResource("2_qegnj")]
+layout_mode = 2
+slot = "slot 3"
+is_load = false
+
+[node name="spacer2" type="Control" parent="UI/load_ui"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="go_back" type="Button" parent="UI/load_ui"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[node name="spacer3" type="Control" parent="UI/load_ui"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="new_game_screen" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/new_game_screen"]
+layout_mode = 0
+offset_right = 1160.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/new_game_screen/PanelContainer"]
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="UI/new_game_screen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="name_label" type="Label" parent="UI/new_game_screen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Enter Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="name_entry_field" type="TextEdit" parent="UI/new_game_screen/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Enter Name"
+
+[node name="button_box" type="HBoxContainer" parent="UI/new_game_screen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="new_game" type="Button" parent="UI/new_game_screen/PanelContainer/VBoxContainer/button_box"]
+layout_mode = 2
+text = "Start New Game"
+
+[node name="cancel_new_game" type="Button" parent="UI/new_game_screen/PanelContainer/VBoxContainer/button_box"]
+layout_mode = 2
+text = "Back"
+
+[node name="spacer2" type="Control" parent="UI/new_game_screen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="new_game" from="UI/load_ui/load_selection/save_data" to="." method="_on_save_data_new_game"]
+[connection signal="new_game" from="UI/load_ui/load_selection/save_data2" to="." method="_on_save_data_new_game"]
+[connection signal="new_game" from="UI/load_ui/load_selection/save_data3" to="." method="_on_save_data_new_game"]
+[connection signal="button_up" from="UI/load_ui/go_back" to="." method="_on_go_back_button_up"]
+[connection signal="button_up" from="UI/new_game_screen/PanelContainer/VBoxContainer/button_box/new_game" to="." method="_on_new_game_button_up"]
+[connection signal="button_up" from="UI/new_game_screen/PanelContainer/VBoxContainer/button_box/cancel_new_game" to="." method="_on_cancel_new_game_button_up"]

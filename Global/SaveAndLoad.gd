@@ -2,6 +2,12 @@ extends Node
 @export var save_dictionary: Dictionary = {}
 @export var data_path="user://save_data.save"
 
+var default_data = {
+			"player":"None",
+			"map":LevelDirectory.level_list.duplicate(true),
+			"inventory":[],
+			"last_save":"None"
+		}
 
 
 func save_game(data):
@@ -36,25 +42,14 @@ func load_json():
 		print('Json parse error:file does not exist')
 		return false
 
-func create_default() -> void:
-	var temp = {
-		"slot1":{
-			"player":"None",
-			"map":LevelDirectory.level_list,
-			"inventory":[],
-			"last_save":"None"
-		},
-		"slot2":{
-			"player":"None",
-			"map":LevelDirectory.level_list,
-			"inventory":[],
-			"last_save":"None"
-		},
-		"slot3":{
-			"player":"None",
-			"map":LevelDirectory.level_list,
-			"inventory":[],
-			"last_save":"None"
-		},
-	}
+func create_default(slot) -> void:
+	var temp = SaveAndLoad.load_game()
+	temp[slot] = default_data.duplicate(true)
+	save_game(temp)
+
+func initialize() -> void:
+	var temp:Dictionary = {}
+	temp["slot 1"] = default_data.duplicate(true)
+	temp["slot 2"] = default_data.duplicate(true)
+	temp["slot 3"] = default_data.duplicate(true)
 	save_game(temp)

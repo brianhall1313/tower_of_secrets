@@ -64,6 +64,8 @@ func process_level_change() -> void:
 		get_tree().change_scene_to_packed(level_list[new_destination]["scene"])
 		new_destination = ""
 		print("new destination is ",new_destination)
+	else :
+		print("error: no destination")
 
 func save_map() -> Dictionary:
 	return level_list
@@ -76,3 +78,13 @@ func new_game() -> void:
 		for item in level_list[level]["pickups"]:
 			item["obtained"] = false
 	print("reset")
+
+func get_percent(slot:String) -> String:
+	var temp_list = SaveAndLoad.load_game()[slot]["map"]
+	var count:float = 0
+	for item in level_list:
+		if temp_list[item]["visited"] == true:
+			count += 1
+	if count == 0:
+		return "0.0%"
+	return str((count/len(level_list.keys()))*100)+"%" 
