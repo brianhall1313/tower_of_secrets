@@ -37,6 +37,7 @@ position = Vector2(192, 592)
 [node name="transition_totower1" parent="." instance=ExtResource("3_n78jj")]
 position = Vector2(-8, 592)
 destination = "tower1"
+from = "towerSave"
 
 [node name="save_point" parent="." instance=ExtResource("4_erdmm")]
 position = Vector2(192, 584)

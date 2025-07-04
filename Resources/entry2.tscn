@@ -37,10 +37,12 @@ position = Vector2(40, 608)
 [node name="transition_totower1" parent="." instance=ExtResource("3_jajs8")]
 position = Vector2(696, 552)
 destination = "tower1"
+from = "entry2"
 
 [node name="transition_toenrtry1" parent="." instance=ExtResource("3_jajs8")]
 position = Vector2(-8, 584)
 destination = "entry1"
+from = "entry2"
 
 [node name="monster" parent="." instance=ExtResource("4_v3cn5")]
 position = Vector2(608, 608)

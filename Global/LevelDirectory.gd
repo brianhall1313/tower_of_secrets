@@ -9,6 +9,7 @@ extends Node
 
 var entry_pos:int = 0
 var new_destination:String = ""
+var from:String = ""
 
 var level_list:Dictionary = {
 	"entry1":{
@@ -52,11 +53,12 @@ var level_list:Dictionary = {
 }
 
 
-func level_change(destination:String)->void:
+func level_change(destination:String,recieved_from:String)->void:
 	if destination in level_list.keys():
 		#update player information
 		if not level_list[destination]["visited"]:
 			level_list[destination]["visited"] = true
+			from = recieved_from
 			new_destination = destination
 
 func process_level_change() -> void:

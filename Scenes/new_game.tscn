@@ -43,18 +43,14 @@ theme_override_constants/separation = 150
 
 [node name="save_data" parent="UI/load_ui/load_selection" instance=ExtResource("2_qegnj")]
 layout_mode = 2
-slot = "slot 1"
-is_load = false
 
 [node name="save_data2" parent="UI/load_ui/load_selection" instance=ExtResource("2_qegnj")]
 layout_mode = 2
 slot = "slot 2"
-is_load = false
 
 [node name="save_data3" parent="UI/load_ui/load_selection" instance=ExtResource("2_qegnj")]
 layout_mode = 2
 slot = "slot 3"
-is_load = false
 
 [node name="spacer2" type="Control" parent="UI/load_ui"]
 layout_mode = 2
