@@ -45,7 +45,11 @@ position = Vector2(-16, 544)
 position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_11ap5")
 
-[node name="transition_toentry2" parent="." instance=ExtResource("3_l7rge")]
+[node name="transition_toentry2" parent="." node_paths=PackedStringArray("spawn") instance=ExtResource("3_l7rge")]
 position = Vector2(696, 552)
 destination = "entry2"
 from = "entry1"
+spawn = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="transition_toentry2"]
+position = Vector2(-32, 48)

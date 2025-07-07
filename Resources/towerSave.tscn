@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://bvebpefox4rrq"]
+[gd_scene load_steps=8 format=4 uid="uid://bvebpefox4rrq"]
 
 [ext_resource type="Texture2D" uid="uid://bepqkkjlglksi" path="res://Sprites/basic_tile.png" id="1_ks2kr"]
+[ext_resource type="Script" uid="uid://cc2kxxocwjvd2" path="res://Resources/level_script.gd" id="1_n78jj"]
 [ext_resource type="PackedScene" uid="uid://dhpsi1vojt34w" path="res://Scenes/player.tscn" id="2_erdmm"]
 [ext_resource type="PackedScene" uid="uid://uvsuhlep113t" path="res://Scenes/transition.tscn" id="3_n78jj"]
 [ext_resource type="PackedScene" uid="uid://c2v1toufa1r5u" path="res://Scenes/save_point.tscn" id="4_erdmm"]
@@ -16,6 +17,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bc63g")
 
 [node name="level" type="Node2D"]
+script = ExtResource("1_n78jj")
 
 [node name="background" type="TileMapLayer" parent="."]
 position = Vector2(88, 0)
@@ -32,13 +34,17 @@ position = Vector2(88, 0)
 tile_set = SubResource("TileSet_xaalk")
 
 [node name="player" parent="." instance=ExtResource("2_erdmm")]
-position = Vector2(192, 592)
+position = Vector2(24, 592)
 
-[node name="transition_totower1" parent="." instance=ExtResource("3_n78jj")]
+[node name="transition_totower1" parent="." node_paths=PackedStringArray("spawn") instance=ExtResource("3_n78jj")]
 position = Vector2(-8, 592)
 destination = "tower1"
 from = "towerSave"
+spawn = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="transition_totower1"]
+position = Vector2(32, 0)
 
 [node name="save_point" parent="." instance=ExtResource("4_erdmm")]
-position = Vector2(192, 584)
+position = Vector2(176, 584)
 location = "towerSave"

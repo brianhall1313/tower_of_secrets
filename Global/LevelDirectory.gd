@@ -64,8 +64,10 @@ func level_change(destination:String,recieved_from:String)->void:
 func process_level_change() -> void:
 	if new_destination != "":
 		get_tree().change_scene_to_packed(level_list[new_destination]["scene"])
+		GlobalSignalBus.transition.emit(from)
+		print("loading to ", new_destination, " from ",from)
+		from = ""
 		new_destination = ""
-		print("new destination is ",new_destination)
 	else :
 		print("error: no destination")
 

@@ -6,8 +6,10 @@ extends Node
 var player_name:String = "Defaulty Defaulterson"
 var current_slot:String = "slot 1" #by default
 var inventory:Array = []
+var player_spawn:String
 
-
+func _ready() -> void:
+	GlobalSignalBus.connect("transition",set_player_spawn)
 
 func setup(new_max_health:int,new_current_health:int)-> void:
 	max_health = new_max_health
@@ -39,8 +41,10 @@ func load_data(slot:String)->void:
 	current_slot = slot
 	var data:Dictionary = SaveAndLoad.load_game()[slot]
 	setup(data["stats"]["max_health"],data["stats"]["current_health"])
-	LevelDirectory.level_change(data["save_location"])
+	LevelDirectory.level_change(data["save_location"],"save")
+	print("loading")
 	LevelDirectory.process_level_change()
+	
 func save_data(location:String)->void:
 	full_heal()
 	print("saving...")
@@ -59,3 +63,6 @@ func new_game(slot,new_name:String) -> void:
 	player_name = new_name
 	inventory = []
 	setup(100,100)
+
+func set_player_spawn(from) -> void:
+	player_spawn = from

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n78jj"]
 size = Vector2(32, 48)
 
-[node name="save_point" type="Node2D"]
+[node name="save_point" type="Node2D" groups=["SavePoint", "Transition"]]
 script = ExtResource("1_qilv1")
 metadata/_edit_group_ = true
 
