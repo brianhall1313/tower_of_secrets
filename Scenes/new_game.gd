@@ -31,7 +31,8 @@ func _on_cancel_new_game_button_up() -> void:
 
 func _on_new_game_button_up() -> void:
 	if name_entry_field.text != "":
-		LevelDirectory.new_game()
-		GlobalPlayer.new_game(new_save_slot,name_entry_field.text)
-		LevelDirectory.level_change("entry1", "entry")
-		LevelDirectory.process_level_change()
+		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		#LevelDirectory.new_game()
+		#GlobalPlayer.new_game(new_save_slot,name_entry_field.text)
+		#LevelDirectory.level_change("entry1", "entry")
+		#LevelDirectory.process_level_change()

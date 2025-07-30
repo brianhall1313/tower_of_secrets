@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgjhwpc18val1"]
+
+[ext_resource type="Script" uid="uid://ce2e2ax57i1hn" path="res://Scenes/player_pov.gd" id="1_oakq3"]
+[ext_resource type="Script" uid="uid://k3kwy3l2eg8p" path="res://Scenes/ui.gd" id="1_rwqo0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
+bg_color = Color(0.933333, 0.211765, 0.2, 1)
+
+[node name="player_pov" type="Camera2D"]
+script = ExtResource("1_oakq3")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -144.0
+offset_top = -72.0
+offset_right = -104.0
+offset_bottom = -32.0
+script = ExtResource("1_rwqo0")
+metadata/_edit_group_ = true
+
+[node name="player_stats" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 172.0
+offset_bottom = 40.0
+
+[node name="health_bar" type="ProgressBar" parent="UI/player_stats"]
+custom_minimum_size = Vector2(180, 9)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_vgqql")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fkybt")
+step = 1.0
+value = 75.0
+show_percentage = false

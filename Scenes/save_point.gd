@@ -10,7 +10,8 @@ func _process(_delta: float) -> void:
 			save()
 
 func save() -> void:
-	GlobalPlayer.save_data(location)
+	print("save called")
+	#GlobalPlayer.save_data(location)
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

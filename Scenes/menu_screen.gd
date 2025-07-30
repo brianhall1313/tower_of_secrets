@@ -2,11 +2,11 @@ extends Node2D
 
 
 func _ready() -> void:
-	var temp = SaveAndLoad.load_game()
-	if not temp:
-		print("no save data, creating defaults")
-		SaveAndLoad.initialize()
-	else:
+	#var temp = SaveAndLoad.load_game()
+	#if not temp:
+	#	print("no save data, creating defaults")
+	#	SaveAndLoad.initialize()
+	#else:
 		pass
 		#print(temp)
 #quits the game
@@ -23,4 +23,5 @@ func _on_load_game_button_up() -> void:
 
 func _on_options_button_up() -> void:
 	#TODO replace this!
-	SaveAndLoad.initialize()
+	#SaveAndLoad.initialize()
+	pass

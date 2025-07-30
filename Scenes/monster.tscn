@@ -20,7 +20,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hyvb2"]
-radius = 300.0
+radius = 184.174
 
 [node name="monster" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_i44lo")

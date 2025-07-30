@@ -4,7 +4,6 @@ extends Node
 
 var default_data = {
 			"player":"None",
-			"map":LevelDirectory.level_list.duplicate(true),
 			"inventory":[],
 			"last_save":"None"
 		}

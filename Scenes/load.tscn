@@ -47,12 +47,12 @@ is_load = true
 
 [node name="save_data2" parent="UI/load_ui/load_selection" instance=ExtResource("2_wsyng")]
 layout_mode = 2
-slot = "slot 2"
+slot = "2"
 is_load = true
 
 [node name="save_data3" parent="UI/load_ui/load_selection" instance=ExtResource("2_wsyng")]
 layout_mode = 2
-slot = "slot 3"
+slot = "3"
 is_load = true
 
 [node name="spacer2" type="Control" parent="UI/load_ui"]

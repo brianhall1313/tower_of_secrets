@@ -6,9 +6,11 @@ extends Node2D
 
 
 func _ready() -> void:
-	save_data_1.setup()
-	save_data_2.setup()
-	save_data_3.setup()
+	var data = SaveAndLoad.load_game()
+	if data:
+		save_data_1.setup(data[0])
+		save_data_2.setup(data[1])
+		save_data_3.setup(data[2])
 
 func _on_go_back_button_up() -> void:
 	get_tree().change_scene_to_file("res://Scenes/menu_screen.tscn")

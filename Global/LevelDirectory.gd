@@ -14,7 +14,7 @@ var from:String = ""
 var level_list:Dictionary = {
 	"entry1":{
 		"visited":false,
-		"scene":load("res://Resources/entry1.tscn"),
+		"scene":load("res://Scenes/levels/entry1.tscn"),
 		"pickups":[
 			{
 				"id":"potion",
@@ -25,7 +25,7 @@ var level_list:Dictionary = {
 	},
 	"entry2":{
 		"visited":false,
-		"scene":load("res://Resources/entry2.tscn"),
+		"scene":load("res://Scenes/levels/entry2.tscn"),
 		"pickups":[
 			{
 				"id":"potion",
@@ -36,7 +36,7 @@ var level_list:Dictionary = {
 	},
 	"tower1":{
 		"visited":false,
-		"scene":load("res://Resources/tower1.tscn"),
+		"scene":load("res://Scenes/levels/tower1.tscn"),
 		"pickups":[
 			{
 				"id":"potion",
@@ -47,7 +47,7 @@ var level_list:Dictionary = {
 	},
 	"towerSave":{
 		"visited":false,
-		"scene":load("res://Resources/towerSave.tscn"),
+		"scene":load("res://Scenes/levels/towerSave.tscn"),
 		"pickups":[],
 	},
 }

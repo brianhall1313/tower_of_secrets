@@ -39,17 +39,17 @@ func get_stats() -> Dictionary:
 
 func load_data(slot:String)->void:
 	current_slot = slot
-	var data:Dictionary = SaveAndLoad.load_game()[slot]
-	setup(data["stats"]["max_health"],data["stats"]["current_health"])
-	LevelDirectory.level_change(data["save_location"],"save")
-	print("loading")
-	LevelDirectory.process_level_change()
+	#var data:Dictionary = SaveAndLoad.load_game()[slot]
+	#setup(data["stats"]["max_health"],data["stats"]["current_health"])
+	#LevelDirectory.level_change(data["save_location"],"save")
+	#print("loading")
+	#LevelDirectory.process_level_change()
 	
 func save_data(location:String)->void:
 	full_heal()
 	print("saving...")
 	var data = SaveAndLoad.load_game()
-	data[current_slot]["map"] = LevelDirectory.save_map()
+	#data[current_slot]["map"] = LevelDirectory.save_map()
 	data[current_slot]["inventory"] = inventory
 	data[current_slot]["player"] = player_name
 	data[current_slot]["stats"] = get_stats()

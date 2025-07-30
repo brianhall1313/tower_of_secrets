@@ -8,16 +8,15 @@ extends VBoxContainer
 @onready var load_button: Button = $buttons/load_button
 @onready var delete_save: Button = $buttons/delete_save
 
-@export var slot:String = "slot 1"
+@export var slot:String = "1"
 @export var is_load:bool = false
 
 signal new_game(new_slot)
 
-func setup() -> void:
-	var data:Dictionary = SaveAndLoad.load_game()[slot]
+func setup(data:Dictionary) -> void:
 	if data:
-		save_slot.text = slot
-		percent.text = LevelDirectory.get_percent(slot)
+		save_slot.text = "Slot " + slot
+		percent.text = "0.0%: default"#LevelDirectory.get_percent(slot)
 		player_name.text = data["player"]
 		last_save_time.text = data["last_save"]
 	if data["last_save"] == "None" and is_load:
@@ -31,7 +30,8 @@ func setup() -> void:
 
 func _on_load_button_button_up() -> void:
 	if is_load:
-		GlobalPlayer.load_data(slot)
+		#TODO load load_data(slot)
+		pass
 	else:
 		#do newgame stuff
 		new_game.emit(slot)

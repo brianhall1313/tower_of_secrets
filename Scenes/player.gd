@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var wall_jump_timer: Timer = $wall_jump_timer
 @onready var attack_timer: Timer = $attack_timer
 @onready var player_sprite: AnimatedSprite2D = $player_sprite
-@onready var ui: Control = $player_pov/UI
+@onready var health: Health = $Health
 
 #attack base
 @onready var melee_box = preload("res://Resources/attack_hit_area.tscn")
@@ -28,12 +28,9 @@ var to_transition:bool = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	ui.setup(GlobalPlayer.max_health,GlobalPlayer.current_health)
+	update_ui()
 #	animated_sprite.play("idle")
 
-func _process(_delta: float) -> void:
-	if to_transition:
-		transition()
 
 func connect_signals() -> void:
 	GlobalSignalBus.connect("update_ui",update_ui)
@@ -151,23 +148,17 @@ func handle_animation(_direction):
 	pass
 
 func take_damage(damage:int) -> void:
-	GlobalPlayer.take_damage(damage)
+	health.take_damage(damage)
 	update_ui()
-	if GlobalPlayer.current_health <= 0:
+	if health.current_health <= 0:
 		death()
 	#TODO play damage taken animation
 
 func update_ui()->void:
-	ui.update_health(GlobalPlayer.max_health,GlobalPlayer.current_health)
+	GlobalSignalBus.update_ui.emit(health.max_health,health.current_health)
 
 func death() -> void:
 	#play death animation
 	print("player death")
 	#TODO don't do this after we make a death screen lol
 	get_tree().quit()
-
-func set_transition()->void:
-	to_transition = true
-
-func transition() -> void:
-	LevelDirectory.process_level_change()
