@@ -6,28 +6,28 @@
 script = ExtResource("1_bmx56")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1160.0
-offset_bottom = 656.0
+offset_right = 320.0
+offset_bottom = 160.0
 color = Color(0.172549, 0.152941, 0.854902, 1)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1160.0
-offset_bottom = 648.0
+offset_right = 320.0
+offset_bottom = 160.0
 
 [node name="main_container" type="VBoxContainer" parent="UI"]
 layout_mode = 0
-offset_right = 1160.0
-offset_bottom = 656.0
+offset_right = 320.0
+offset_bottom = 160.0
 
 [node name="spacer" type="Control" parent="UI/main_container"]
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="UI/main_container"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 16
 text = "Tower of Secrets"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -44,18 +44,22 @@ theme_override_constants/separation = 5
 
 [node name="new_game" type="Button" parent="UI/main_container/menu_buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 6
 text = "New Game"
 
 [node name="load_game" type="Button" parent="UI/main_container/menu_buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 6
 text = "Load Game"
 
 [node name="options" type="Button" parent="UI/main_container/menu_buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 6
 text = "Options"
 
 [node name="exit" type="Button" parent="UI/main_container/menu_buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 6
 text = "Exit"
 
 [node name="spacer3" type="Control" parent="UI/main_container"]

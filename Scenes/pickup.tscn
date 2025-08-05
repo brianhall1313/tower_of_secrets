@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cv80u41ent4l3" path="res://Sprites/potion.png" id="1_v7u4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cya6u"]
+size = Vector2(32, 32)
 
 [node name="pickup" type="Node2D"]
 script = ExtResource("1_cya6u")

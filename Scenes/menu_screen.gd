@@ -2,12 +2,12 @@ extends Node2D
 
 
 func _ready() -> void:
+	print(OS.get_data_dir())
 	#var temp = SaveAndLoad.load_game()
 	#if not temp:
 	#	print("no save data, creating defaults")
 	#	SaveAndLoad.initialize()
 	#else:
-		pass
 		#print(temp)
 #quits the game
 func _on_exit_button_up() -> void:

@@ -11,7 +11,13 @@ func _process(_delta: float) -> void:
 
 func save() -> void:
 	print("save called")
-	#GlobalPlayer.save_data(location)
+	print(MetSys.get_save_data())
+	var data = {
+		"map":MetSys.get_save_data()
+	}
+	SaveAndLoad.save_game(data)
+	#MetSys.get_save_data() will get you a dict to save from
+	
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
