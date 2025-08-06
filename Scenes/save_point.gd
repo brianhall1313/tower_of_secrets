@@ -10,12 +10,7 @@ func _process(_delta: float) -> void:
 			save()
 
 func save() -> void:
-	print("save called")
-	print(MetSys.get_save_data())
-	var data = {
-		"map":MetSys.get_save_data()
-	}
-	SaveAndLoad.save_game(data)
+	GlobalSignalBus.emit_signal("save")
 	#MetSys.get_save_data() will get you a dict to save from
 	
 	
